@@ -1,4 +1,7 @@
+let frequency = 0
+let y = 0
 let counter = 0
+let x = 0
 basic.showLeds(`
     . . . . .
     . . . . .
@@ -7,8 +10,11 @@ basic.showLeds(`
     . . . . .
     `)
 basic.forever(function () {
-    led.toggle(counter % 5, counter / 5)
-    music.ringTone(131 + (988 - 131) * ((25 - counter) / 25))
+    x = counter % 5
+    y = counter / 5
+    led.toggle(x, y)
+    frequency = 131 + (988 - 131) * (counter / 25)
+    music.ringTone(frequency)
     basic.pause(50)
     counter += 1
     counter = counter % 25
